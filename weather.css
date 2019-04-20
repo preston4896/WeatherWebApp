@@ -1,0 +1,76 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*
+    CSS primary design for mobile view.
+*/
+
+#view1 {
+    color: white;
+    background-image: linear-gradient(rgb(73,138,220),rgb(98,59,156));
+    font-family: 'IBM Plex Sans',sans-serif; 
+    font-weight: 450; /*medium?*/
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#head-container {
+    order: 1
+}
+
+#head-container > h1 {
+    font-size: 45pt;
+}
+
+#head-container > h2 {
+    font-size: 33pt;
+    color: rgb(63, 80, 172); /*might not match design mockup*/
+}
+
+#current-weather {
+    display: flex;
+    flex-direction: row;
+    order: 4;
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-weight: 200; /*light?*/
+    justify-content: center;
+    align-items: center;
+}
+
+.time-1 {
+    font-size: 35pt;
+}
+
+.temp-1 {
+    font-size: 85pt;
+}
+
+#search {
+    order: 2;
+    display: flex;
+}
+
+#search > p {
+    font-size: 22pt;
+}
+
+#doppler {
+    display: none; /*not visible on mobile view.*/
+}
+
+#logo {
+    order: 3;
+    max-height: 200px; max-width: 200px;
+}
+
+#view2 {
+    display: none; /*not visible until user swipes up*/
+}
+

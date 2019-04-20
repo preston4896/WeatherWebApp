@@ -11,25 +11,70 @@
     </head>
 
     <body>
-        <!--Div includes the title, subtitle and the search box, implemented with flexbox-->
-        <div id="head-container">
-            <h1> Local Weather Six Hour Forecast </h1>
-            <p> Northern California with doppler radar</p>
+        <!--Current Weather View-->
+        <div id="view1">
+            <!--Div includes the title and subtitle-->
+            <div id="head-container">
+                <h1> Local Weather Six Hour Forecast </h1>
+                <h2> Northern California with doppler radar</h2>
+            </div>
+
+            <!-- Div includes current time and temperature -->
+            <div id="current-weather">
+                <p class= "time-1"> Current <br>
+                                    12PM
+                </p>
+                <p class= "temp-1"> 96° </p>
+            </div>
+
+            <img id="logo" src="assets/clearsky.svg" alt="clearsky">
+
             <div id="search">
-                <p> Forecast for </p>
-                <!--code-->
+                    <p> Forecast for </p>
+                    <!--code-->
+                </div>
+
+            <div id="doppler">
+                    <!--code-->
             </div>
         </div>
 
-        <!-- Div includes weather icon, current time and temperature -->
-        <div id="current-weather">
-            <img id="logo" src="assets/clearsky.svg" alt="clearsky">
-            <div id="current-description">
-                <p> Current </p>
-                <p> 12PM </p>
-                <p> 69° </p>
+        <!--Six Hour Weather-->
+        <div id="view2">
+            <div id="six-hour-table">
+                <div class="hourly-cell">
+                    <p> 1:00 pm </p>
+                    <img src="assets/brokencloud.svg" alt="cloudy">
+                    <p> 96°</p>
+                </div>
+                <div class="hourly-cell">
+                        <p> 1:00 pm </p>
+                        <img src="assets/brokencloud.svg" alt="cloudy">
+                        <p> 96°</p>
+                </div>
+                <div class="hourly-cell">
+                        <p> 1:00 pm </p>
+                        <img src="assets/brokencloud.svg" alt="cloudy">
+                        <p> 96°</p>
+                </div>
+                <div class="hourly-cell">
+                        <p> 1:00 pm </p>
+                        <img src="assets/brokencloud.svg" alt="cloudy">
+                        <p> 96°</p>
+                </div>
+                <div class="hourly-cell">
+                        <p> 1:00 pm </p>
+                        <img src="assets/brokencloud.svg" alt="cloudy">
+                        <p> 96°</p>
+                </div>
+                <div class="hourly-cell">
+                        <p> 1:00 pm </p>
+                        <img src="assets/brokencloud.svg" alt="cloudy">
+                        <p> 96°</p>
+                </div>
             </div>
         </div>
-    </body>
+
+        </body>
 
 </htnl>
