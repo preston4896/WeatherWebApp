@@ -27,11 +27,13 @@ body {
 
 #head-container > h1 {
     font-size: 45pt;
+    text-align: center;
 }
 
 #head-container > h2 {
     font-size: 33pt;
-    color: rgb(63, 80, 172); /*might not match design mockup*/
+    color: rgb(44,48,145); /*might not match design mockup*/
+    text-align: center;
 }
 
 #current-weather {
@@ -55,6 +57,9 @@ body {
 #search {
     order: 2;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #search > p {
@@ -66,11 +71,9 @@ body {
 }
 
 #logo {
-    order: 3;
     max-height: 200px; max-width: 200px;
 }
 
 #view2 {
     display: none; /*not visible until user swipes up*/
 }
-
