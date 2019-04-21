@@ -66,6 +66,18 @@ body {
     font-size: 22pt;
 }
 
+.textfield {
+    background-color: rgb(44,48,145);
+    font-size: 20pt;
+    color: white;
+}
+
+#submit {
+    color: white;
+    font-size: 16pt;
+    background-color: #7f88cb;
+}
+
 #doppler {
     display: none; /*not visible on mobile view.*/
 }
