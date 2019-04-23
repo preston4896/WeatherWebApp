@@ -10,7 +10,7 @@ function createCORSRequest(method, url) {
 }
 
 // Make the actual CORS request.
-function makeCorsRequest(city) {
+function makeCorsRequest(city, offsetHour) {
 
    let url = "http://api.openweathermap.org/data/2.5/forecast/hourly?q="+ city +",US&units=imperial&APPID=08a320da24b2e3001b8053f20ffe32a9"
 
@@ -26,7 +26,15 @@ function makeCorsRequest(city) {
   xhr.onload = function() {
       let responseStr = xhr.responseText;  // get the JSON string 
       let object = JSON.parse(responseStr);  // turn it into an object
-      console.log(JSON.stringify(object, undefined, 2));  // print it out as a string, nicely formatted
+      // console.log(JSON.stringify(object, undefined, 2));  // print it out as a string, nicely formatted
+
+      //modify HTML output here.
+      // temp
+      document.getElementById("temp-1").textContent = Math.round(object.list[offsetHour].main.temp) + "° F";
+
+      // weather icon
+      document.getElementById("logo").src = "assets/" + generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
+      document.getElementById("logo").alt = generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
   };
 
   xhr.onerror = function() {
@@ -35,14 +43,68 @@ function makeCorsRequest(city) {
 
   // Actually send request to server
   xhr.send();
-
-  return object;
 }
 
-// show weather info when page is loaded.
+// generate icon file name
+function generateIconFileName(inputHour, inputDescription) {
+  // assume sun rises at 6am; sets at 6pm.
+  let dayNight = "";
+  if ((inputHour < 18) || (inputHour >= 6)) {
+    dayNight = "-day";
+  }
+  
+  else if ((inputHour >= 18) || (inputHour < 6)) {
+    dayNight = "-night";
+  }
+
+  switch (inputDescription) {
+    case "Clouds":
+      return "fewclouds"+dayNight+".svg";
+      break;
+    case "Clear":
+      return "clear"+dayNight+".svg";
+      break;
+    case "Rain":
+      return "rain" +dayNight+".svg";
+      break;
+    case "Snow":
+      return "snow.svg";
+      break;
+    case "Thunderstorm":
+      return "thunderstorm.svg";
+      break;
+  }
+}
+
+
+function loadCurrentHour() {
+  //load current hour
+  let today = new Date();
+  let hour = today.getHours();
+  return hour;
+}
+
+// show default weather info (Davis, CA) when page is loaded.
 function loadUI() {
-    let data = makeCorsRequest("Davis, CA");
-    // document.getElementById("current_time").innerHTML = data.list.w
+  //receives Davis, CA from the search fill box.
+  let defaultInput = document.getElementById("textfield").placeholder;
+
+  let hour = loadCurrentHour();
+
+  // convert 24-hour to 12-hour format
+  if (hour < 12) {
+    if (hour == 0) {
+      hour = 12; //midnight
+    }
+    document.getElementById("current_time").textContent = hour + " AM";
+  }
+  else {
+    hour = hour - 12;
+    document.getElementById("current_time").textContent = hour + " PM";
+  }
+
+  //make request to the server and outputs weather data to HTML.
+  makeCorsRequest(defaultInput, 0);
 }
 
 // run this code to make request when this script file gets executed 
