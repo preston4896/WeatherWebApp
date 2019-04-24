@@ -26,6 +26,4 @@
 
 - CSS code for tablet and desktop views.
 
-# Next Agenda:
-
 - Code implementation for doppler radar map.
