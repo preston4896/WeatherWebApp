@@ -13,32 +13,37 @@
     <body>
         <!--Current Weather View-->
         <div id="view1">
-            <!--Div includes the title and subtitle-->
-            <div id="head-container">
-                <h1> Local Weather Six Hour Forecast </h1>
-                <h2> Northern California with doppler radar</h2>
-            </div>
+            <div id="current">
+                <!--Div includes the title and subtitle-->
+                <div id="head-container">
+                    <h1> Local Weather Six Hour Forecast </h1>
+                    <h2> Northern California with doppler radar</h2>
+                </div>
 
-            <!-- Div includes current time and temperature -->
-            <div id="current-weather">
-                <p class= "time-1"> Current</p>
-                <p class= "time-1", id="current_time"> 12 PM </p>
-                <p id= "temp-1"> 96° F</p>
-            </div>
+                <!-- Div includes current time and temperature -->
+                <div id="current-weather">
+                    <p class= "time-1"> Current</p>
+                    <p class= "time-1", id="current_time"> 12 PM </p>
+                    <p id= "temp-1"> 96° F</p>
+                </div>
 
-            <div id="search">
-                    <p> Forecast for </p>
-                    <div id="input">
-                        <input id="textfield" type="text" placeholder="Davis, CA">
-                        <p id="errorMessage"> City Not Found.</p>
-                        <button id="submit">
-                            Submit
-                        </button>
-                    </div>
-                    <img id="logo" src="assets/clear-day.svg" alt="clearsky">
-                    <!--code-->
-            </div>
+                <div id="search">
+                        <p> Forecast for </p>
+                        <div id="input">
+                            <input id="textfield" type="text" placeholder="Davis, CA">
+                            <p id="errorMessage"> City Not Found.</p>
+                            <button id="submit">
+                                Submit
+                            </button>
+                        </div>
+                        <img id="logo" src="assets/clear-day.svg" alt="clearsky">
+                </div>
 
+                <div id="up">
+                    <p id="s-up">  &#708 <!-- up arrow unicode --> <p>
+                </div>
+
+            </div>
             <div id="doppler">
                     <!--code-->
             </div>
@@ -46,6 +51,9 @@
 
         <!--Six Hour Weather-->
         <div id="view2">
+            <div id="down">
+                <p id="s-down"> &#709 <!-- down arrow unicode --> </p>
+            </div>
             <div class="hourly-cell">
                 <p id="hour-1" class="hour"> 1 pm </p>
                 <img src="assets/brokencloud.svg" alt="cloudy" id="icon-1">

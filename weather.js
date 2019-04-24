@@ -143,7 +143,9 @@ function hourFormatting(inputHour) {
   }
 
   if (timeHour.hour <= 23) {
-    timeHour.hour = timeHour.hour - 12;
+    if (timeHour.hour != 12) {
+      timeHour.hour = timeHour.hour - 12;
+    }
     timeHour.text = "PM";
     return timeHour;
   }
@@ -176,6 +178,26 @@ function updateUI() {
 document.getElementById("submit").addEventListener('click', function() {
   updateUI();
 });
+
+// swipe up vs down
+function loadView1() {
+  document.getElementById("view1").style.display = "flex";
+  document.getElementById("view2").style.display = "none";
+}
+
+function loadView2() {
+  document.getElementById("view1").style.display = "none";
+  document.getElementById("view2").style.display = "flex";
+}
+
+document.getElementById("s-up").addEventListener('click', function() {
+  loadView2();
+});
+
+document.getElementById("s-down").addEventListener('click', function() {
+  loadView1();
+});
+
 
 // run this code to make request when this script file gets executed 
 loadUI();

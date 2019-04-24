@@ -13,12 +13,16 @@ body {
     color: white;
     background-image: linear-gradient(rgb(73,138,220),rgb(98,59,156));
     font-family: 'IBM Plex Sans',sans-serif; 
-    font-weight: 450; /*medium?*/
-    /* display: none; */
+    font-weight: medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* center - modify this line for tablet and web. */ 
+}
+
+#current {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-
+    justify-content: center; /* align all items */
 }
 
 #head-container {
@@ -26,12 +30,12 @@ body {
 }
 
 #head-container > h1 {
-    font-size: 45pt;
+    font-size: 45px;
     text-align: center;
 }
 
 #head-container > h2 {
-    font-size: 33pt;
+    font-size: 33px;
     color: rgb(44,48,145); /*might not match design mockup*/
     text-align: center;
 }
@@ -39,19 +43,19 @@ body {
 #current-weather {
     display: flex;
     flex-direction: row;
-    order: 4;
+    order: 3;
     font-family: "Saira Extra Condensed", sans-serif;
-    font-weight: 200; /*light?*/
+    font-weight: lighter;
     justify-content: space-evenly;
     align-items: center;
 }
 
 .time-1 {
-    font-size: 35pt;
+    font-size: 35px;
 }
 
 #temp-1 {
-    font-size: 85pt;
+    font-size: 85px;
 }
 
 #search {
@@ -63,24 +67,24 @@ body {
 }
 
 #errorMessage {
-    font-size: 8pt;
+    font-size: 8px;
     color: red;
     display: none;
 }
 
 #search > p {
-    font-size: 22pt;
+    font-size: 22px;
 }
 
 #textfield {
     background-color: rgb(44,48,145);
-    font-size: 20pt;
+    font-size: 20px;
     color: white;
 }
 
 #submit {
     color: white;
-    font-size: 16pt;
+    font-size: 16px;
     background-color: #7f88cb;
 }
 
@@ -92,30 +96,42 @@ body {
     max-height: 200px; max-width: 200px;
 }
 
+#up {
+    order: 4;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
 #view2 {
-    /* display: none; */
-    display: flex;
+    display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center;  
+}
+
+#down {
+    text-align: center;
+    font-size: 50px;
 }
 
 .hourly-cell {
     font-family: "Saira Extra Condensed", sans-serif;
-    font-weight: 200; /*light?*/
+    font-weight: lighter; /*light?*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    max-height: 170px;
 }
 
 .hourly-cell > img {
-    max-height: 200px; max-width: 200px;
+    max-height: 100px; max-width: 100px;
 }
 
 .hourly-cell > .hour {
-    font-size: 25pt;
+    font-size: 25px;
 }
 
 .hourly-cell > .temp {
-    font-size: 50pt;
+    font-size: 50px;
 }
