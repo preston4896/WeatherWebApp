@@ -28,13 +28,22 @@ function makeCorsRequest(city, offsetHour) {
       let object = JSON.parse(responseStr);  // turn it into an object
       // console.log(JSON.stringify(object, undefined, 2));  // print it out as a string, nicely formatted
 
-      //modify HTML output here.
-      // temp
-      document.getElementById("temp-1").textContent = Math.round(object.list[offsetHour].main.temp) + "° F";
+      //API Message
+      let message = object.message;
+      if (message == "city not found") {
+        document.getElementById("errorMessage").style.display = "block";
+      }
+      else {
+        //modify HTML output here.
+        document.getElementById("errorMessage").style.display = "none";
 
-      // weather icon
-      document.getElementById("logo").src = "assets/" + generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
-      document.getElementById("logo").alt = generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
+        // temp
+        document.getElementById("temp-1").textContent = Math.round(object.list[offsetHour].main.temp) + "° F";
+
+        // weather icon
+        document.getElementById("logo").src = "assets/" + generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
+        document.getElementById("logo").alt = generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
+      }
   };
 
   xhr.onerror = function() {
@@ -49,11 +58,15 @@ function makeCorsRequest(city, offsetHour) {
 function generateIconFileName(inputHour, inputDescription) {
   // assume sun rises at 6am; sets at 6pm.
   let dayNight = "";
-  if ((inputHour < 18) || (inputHour >= 6)) {
-    dayNight = "-day";
+  if (inputHour < 6) {
+    dayNight = "-night";
   }
-  
-  else if ((inputHour >= 18) || (inputHour < 6)) {
+
+  else if ((inputHour >= 6) && (inputHour < 18)) {
+    dayNight = "-day"
+  }
+
+  else if ((inputHour >= 18) && (inputHour <= 23)) {
     dayNight = "-night";
   }
 
@@ -105,6 +118,15 @@ function loadUI() {
 
   //make request to the server and outputs weather data to HTML.
   makeCorsRequest(defaultInput, 0);
+}
+
+//reload the page with weather info after user clicked the submit button.
+document.getElementById("submit").addEventListener('click', function() {
+  updateUI();
+});
+function updateUI() {
+  let input = document.getElementById("textfield").value;
+  makeCorsRequest(input, 0);
 }
 
 // run this code to make request when this script file gets executed 
