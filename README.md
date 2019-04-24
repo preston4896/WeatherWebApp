@@ -1,12 +1,12 @@
-## Weather Web Application by Preston and Sach
+# Weather Web Application by Preston and Sach
 
-# Definitions:
+## Definitions:
 
 - View 1: Display current weather info, doppler radar map and search bar.
 
 - View 2: Display six-hour weather forecast of the input city.
 
-# Progress Log:
+## Progress Log:
 
 - Completed HTML and CSS ``` <div> ``` sections for mobile view-1.
 
@@ -20,7 +20,7 @@
 
 - OpenWeather API is now completely functional for both View 1 and View 2.
 
-# Current Agenda:
+## Current Agenda:
 
 - Fix mobile view CSS.
 
