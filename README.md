@@ -1,24 +1,31 @@
 ## Weather Web Application by Preston and Sach
 
+# Definitions:
+
+- View 1: Display current weather info, doppler radar map and search bar.
+
+- View 2: Display six-hour weather forecast of the input city.
+
 # Progress Log:
 
-- Setting up mobile view with CSS and HTML.
+- Completed HTML and CSS ``` <div> ``` sections for mobile view-1.
+
+- Acquired and activated OpenWeather API Key.
+
+- CORS Request Success
+
+- Submit button is functional. View 1 can now display current weather info for all US Cities.
 
 # Current Agenda:
 
-- Waiting for API key to be activated by OpenWeather. 
+- Fix mobile-view-1 CSS flexbox, so the design matches the mockup.
 
-- API Key: 08a320da24b2e3001b8053f20ffe32a9
+- Start working on mobile-view-2.
 
 # Next Agenda:
 
-- Fix design.
-    - Search bar.
+- Setup ``` <div> ``` for mobile-view 2.
 
-- Code API Request.
+- CSS code for tablet and desktop views.
 
-- Work on second view CSS.
-
-- Work on tablet and desktop version.
-    - Begin coding for doppler radar image.
-
+- Code implementation for doppler radar map.
