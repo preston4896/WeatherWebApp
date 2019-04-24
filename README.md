@@ -16,16 +16,16 @@
 
 - Submit button is functional. View 1 can now display current weather info for all US Cities.
 
-# Current Agenda:
-
-- Fix mobile-view-1 CSS flexbox, so the design matches the mockup.
-
-- Start working on mobile-view-2.
-
-# Next Agenda:
-
 - Setup ``` <div> ``` for mobile-view 2.
 
+- OpenWeather API is now completely functional for both View 1 and View 2.
+
+# Current Agenda:
+
+- Fix mobile view CSS.
+
 - CSS code for tablet and desktop views.
+
+# Next Agenda:
 
 - Code implementation for doppler radar map.
