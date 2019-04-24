@@ -93,5 +93,29 @@ body {
 }
 
 #view2 {
-    display: none; /*not visible until user swipes up*/
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hourly-cell {
+    font-family: "Saira Extra Condensed", sans-serif;
+    font-weight: 200; /*light?*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hourly-cell > img {
+    max-height: 200px; max-width: 200px;
+}
+
+.hourly-cell > .hour {
+    font-size: 25pt;
+}
+
+.hourly-cell > .temp {
+    font-size: 50pt;
 }

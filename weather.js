@@ -38,11 +38,37 @@ function makeCorsRequest(city, offsetHour) {
         document.getElementById("errorMessage").style.display = "none";
 
         // temp
-        document.getElementById("temp-1").textContent = Math.round(object.list[offsetHour].main.temp) + "° F";
+        let temp = Math.round(object.list[offsetHour].main.temp);
+        document.getElementById("temp-1").textContent = temp + "° F";
 
         // weather icon
-        document.getElementById("logo").src = "assets/" + generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
-        document.getElementById("logo").alt = generateIconFileName(loadCurrentHour() + offsetHour, object.list[offsetHour].weather[0].main);
+        let iconPath = "assets/" + generateIconFileName(loadCurrentHour(), object.list[offsetHour].weather[0].main);
+        let iconFileName = generateIconFileName(loadCurrentHour(), object.list[offsetHour].weather[0].main);
+        document.getElementById("logo").src = iconPath;
+        document.getElementById("logo").alt = iconFileName;
+
+        // view 2
+        offsetHour++;
+        for (offsetHour; offsetHour < 6; offsetHour++) {
+          // update variables on every iteration.
+          let hour = loadCurrentHour() + offsetHour;
+          let formattedTime = hourFormatting(hour);
+          let temp = Math.round(object.list[offsetHour].main.temp);
+          let iconPath = "assets/" + generateIconFileName(hour, object.list[offsetHour].weather[0].main);
+          let iconFileName = generateIconFileName(hour, object.list[offsetHour].weather[0].main);
+
+          // update view 2 HTML
+          document.getElementById("icon-"+offsetHour).src = iconPath;
+          document.getElementById("icon-"+offsetHour).alt = iconFileName;
+          document.getElementById("tempCell-"+offsetHour).textContent = temp + "° F";
+          document.getElementById("hour-"+offsetHour).textContent = formattedTime.hour + " " + formattedTime.text.toLowerCase();
+
+          // //debug
+          // console.log("view 2 hour: " + hour);
+          // console.log("view 2 formatted hour: " + formattedTime.hour);
+          // console.log("view 2 icon: " + iconPath);
+          // console.log("view 2 temp: " + temp);
+        }
       }
   };
 
@@ -58,7 +84,12 @@ function makeCorsRequest(city, offsetHour) {
 function generateIconFileName(inputHour, inputDescription) {
   // assume sun rises at 6am; sets at 6pm.
   let dayNight = "";
-  if (inputHour < 6) {
+
+  if (inputHour >= 24) {
+    inputHour = inputHour - 24;
+  }
+
+  if ((inputHour < 6) || (inputHour == 0)) {
     dayNight = "-night";
   }
 
@@ -89,7 +120,6 @@ function generateIconFileName(inputHour, inputDescription) {
   }
 }
 
-
 function loadCurrentHour() {
   //load current hour
   let today = new Date();
@@ -97,37 +127,55 @@ function loadCurrentHour() {
   return hour;
 }
 
+function hourFormatting(inputHour) {
+  let timeHour = {
+      hour: inputHour,
+      text: ""
+  }
+
+  // convert 24-hour to 12-hour format
+  if (timeHour.hour < 12) {
+    if (timeHour.hour == 0) {
+      timeHour.hour = 12; //midnight
+    }
+    timeHour.text = "AM";
+    return timeHour;
+  }
+
+  if (timeHour.hour <= 23) {
+    timeHour.hour = timeHour.hour - 12;
+    timeHour.text = "PM";
+    return timeHour;
+  }
+
+  else { // over 24 hours
+    timeHour.hour = timeHour.hour - 24;
+    let recursion = hourFormatting(timeHour.hour);
+    return recursion;
+  }
+}
+
 // show default weather info (Davis, CA) when page is loaded.
 function loadUI() {
   //receives Davis, CA from the search fill box.
   let defaultInput = document.getElementById("textfield").placeholder;
-
   let hour = loadCurrentHour();
-
-  // convert 24-hour to 12-hour format
-  if (hour < 12) {
-    if (hour == 0) {
-      hour = 12; //midnight
-    }
-    document.getElementById("current_time").textContent = hour + " AM";
-  }
-  else {
-    hour = hour - 12;
-    document.getElementById("current_time").textContent = hour + " PM";
-  }
-
+  let formattedTime = hourFormatting(hour);
+  // console.log(formattedTime.hour + " " + formattedTime.text); //debug
+  document.getElementById("current_time").textContent = formattedTime.hour + " " + formattedTime.text;
   //make request to the server and outputs weather data to HTML.
   makeCorsRequest(defaultInput, 0);
 }
 
 //reload the page with weather info after user clicked the submit button.
-document.getElementById("submit").addEventListener('click', function() {
-  updateUI();
-});
 function updateUI() {
   let input = document.getElementById("textfield").value;
   makeCorsRequest(input, 0);
 }
+
+document.getElementById("submit").addEventListener('click', function() {
+  updateUI();
+});
 
 // run this code to make request when this script file gets executed 
 loadUI();
