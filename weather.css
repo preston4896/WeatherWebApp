@@ -67,9 +67,19 @@ body {
 }
 
 #errorMessage {
-    font-size: 8px;
     color: red;
     display: none;
+}
+
+#input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#input > p {
+    align-content: center;
 }
 
 #search > p {
@@ -80,12 +90,16 @@ body {
     background-color: rgb(44,48,145);
     font-size: 20px;
     color: white;
+    max-height: 30px;
+    max-width: 500px;
 }
 
 #submit {
     color: white;
     font-size: 16px;
     background-color: #7f88cb;
+    max-height: 30px;
+    margin: 0px;
 }
 
 #doppler {
@@ -94,6 +108,7 @@ body {
 
 #logo {
     max-height: 200px; max-width: 200px;
+    float: center;
 }
 
 #up {
@@ -134,4 +149,59 @@ body {
 
 .hourly-cell > .temp {
     font-size: 50px;
+}
+
+/*
+    CSS design for tablet view.
+*/
+
+@media (min-width: 480px) {
+
+    #doppler {
+        display: flex;
+    }
+
+    .radar {
+        position: absolute;
+        width: 350px;
+        padding: 60px;
+        border-radius: 50%;
+        height: 350px;
+        top: 0;
+        right: 0;
+    }
+
+    #up, #down {
+        display: none;
+    }
+
+    #view1 {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #view2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hourly-cell {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hourly-cell > .hour {
+        font-size: 35px;
+    }
+    
+    .hourly-cell > .temp {
+        font-size: 70px;
+    }
+
+    #doppler {
+        display: flex;
+
+    }
 }

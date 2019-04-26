@@ -30,12 +30,12 @@
                 <div id="search">
                         <p> Forecast for </p>
                         <div id="input">
-                            <input id="textfield" type="text" placeholder="Davis, CA">
-                            <p id="errorMessage"> City Not Found.</p>
+                            <input id="textfield" type="text" placeholder="Davis">
                             <button id="submit">
-                                Submit
+                                submit
                             </button>
                         </div>
+                        <p id="errorMessage"> Invalid input.</p>
                         <img id="logo" src="assets/clear-day.svg" alt="clearsky">
                 </div>
 
@@ -45,7 +45,22 @@
 
             </div>
             <div id="doppler">
-                    <!--code-->
+            <img
+                class="radar"
+                src="https://radar.weather.gov/ridge/Overlays/Topo/Short/DAX_Topo_Short.jpg"
+                alt="doppler radar"
+            />
+            <img
+                class="radar"
+                src="http://radar.weather.gov/ridge/Overlays/Cities/Short/DAX_City_Short.gif"
+                alt="overlay"
+            />
+            <img
+                class="radar"
+                src="https://radar.weather.gov/ridge/RadarImg/N0R/DAX_N0R_0.gif "
+                id="doppler"
+                alt="radarimg"
+            /> 
             </div>
         </div>
 
@@ -84,5 +99,7 @@
         </body>
 
         <script src="weather.js"></script>
+        
+        <script src="dopplerAnimate.js"></script>
 
 </htnl>
